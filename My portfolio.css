@@ -1,0 +1,94 @@
+/* General Styles */
+* {
+    margin: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #efccfa;
+    /* Soft Pink Background */
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    color: #64044d;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 50px 0;
+    background-color: rgba(171, 4, 180, 0.5);
+    /* Lighter Pink Gradient */
+}
+
+.menu ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-top: 20px;
+    background-color: rgba(171, 4, 180, 0.5);
+    /* Transparent Pink */
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    transition: all .3s ease-in-out;
+}
+
+.menu li a:hover {
+    transform: scale(1.1);
+    color: #efd1f4;
+    /* Darker Pink Hover Effect */
+}
+
+.content-section h2 {
+    color: #51068e;
+    /* Bold Pink Heading Color */
+    margin-bottom: 20px;
+}
+
+.edu-block,
+.job-block {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-list ul {
+    columns: 2;
+    column-gap: 20px;
+}
+
+.skill-list li {
+    padding: 5px 0;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(171, 4, 180, 0.5);
+    /* Same as header */
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .skill-list ul {
+        columns: 1;
+    }
+}
