@@ -1,4 +1,4 @@
-const reactContentRoot = document.getElementById('root')
+const root = ReactDOM.createRoot(document.getElementById('root'))
 
 // const myItem = "mike"
 
@@ -21,4 +21,4 @@ const App = () => {
 // // )
 // ReactDOM.render(myJSXElement, reactContentRoot)
 
-ReactDOM.render(<App />, reactContentRoot)
+ReactDOM.render(<App />, root)
