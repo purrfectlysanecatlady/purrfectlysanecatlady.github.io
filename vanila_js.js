@@ -1,4 +1,4 @@
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const root = document.getElementById('root')
 
 const App = () => {
     const myItem = "I like Mike Dane's tutorials."
