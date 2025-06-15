@@ -22,3 +22,4 @@ const App = () => {
 // ReactDOM.render(myJSXElement, reactContentRoot)
 
 ReactDOM.render(<App />, root)
+
