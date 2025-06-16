@@ -24,12 +24,6 @@ body {
     /* Lighter Pink Gradient */
 }
 
-.fancy-border {
-    border: 1px dashed black;
-    border-radius: 5px;
-    width: 20rem;
-    background-color: rgb(252, 252, 154);
-}
 
 .menu ul {
     list-style-type: none;
