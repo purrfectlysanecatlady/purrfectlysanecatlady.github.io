@@ -1,21 +1,21 @@
 html {
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
 .card {
-    border: 3px solid black;
-    width: 10em;
-    border-radius: 2em;
+    border: 0.1rem solid black;
+    width: 5rem;
+    border-radius: 1rem;
     overflow: hidden;
 }
 
 
 .cat {
-    width: 8rem;
+    width: 5rem;
     cursor: pointer;
 }
 
 
 .fact {
-    padding: 1em;
+    padding: 0.5rem;
 }
