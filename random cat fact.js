@@ -9,8 +9,6 @@ const getCatFact = async () => {
         fact.textContent = data.fact;
     } catch (e) {
         console.error(e)
-
-
     }
 }
 cat.addEventListener("click", () => { getCatFact() })
