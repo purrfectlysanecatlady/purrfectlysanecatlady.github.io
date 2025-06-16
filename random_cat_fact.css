@@ -6,12 +6,12 @@ html
 .cat {
     width: 10em;
     cursor: pointer;
+    border-radius: 30px;
 }
 
 .card {
     display: flex;
     justify-content: center;
-    border-radius: 30px;
 }
 
 
