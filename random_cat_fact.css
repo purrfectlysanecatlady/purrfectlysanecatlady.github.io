@@ -1,4 +1,4 @@
-body
+html
 {
     text-align: center;
 }
@@ -6,7 +6,6 @@ body
 .cat {
     width: 10em;
     cursor: pointer;
-    align: center;
 }
 
 
