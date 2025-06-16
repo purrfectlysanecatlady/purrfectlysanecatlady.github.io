@@ -61,7 +61,10 @@ body {
 
 .skill-list ul {
     columns: 2;
-    column-gap: 20px;
+    column-gap: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .skill-list li {
