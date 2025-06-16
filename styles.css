@@ -58,7 +58,8 @@ body {
 .edu-block,
 .job-block, 
 .skill-list,
-.portfolio-list {
+.portfolio-list,
+.contact-info {
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
