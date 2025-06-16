@@ -51,24 +51,9 @@ body {
 }
 
 .edu-block,
-.job-block {
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.skill-list 
-{
-    background-color: white;
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.portfolio {
+.job-block, 
+.skill-list,
+.portfolio-list {
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
@@ -97,6 +82,10 @@ body {
     }
 
     .skill-list ul {
+        columns: 1;
+    }
+
+    .portfolio-list ul {
         columns: 1;
     }
 }
