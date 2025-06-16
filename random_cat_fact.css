@@ -1,17 +1,18 @@
 .card {
-    border: 0.1rem solid black;
-    width: 5rem;
-    border-radius: 1rem;
+    border: 3px solid black;
+    width: 10em;
+    border-radius: 2em;
     overflow: hidden;
 }
 
 
 .cat {
-    width: 5rem;
+    width: 10em;
     cursor: pointer;
 }
 
 
 .fact {
-    padding: 0.5rem;
+    padding: 1em;
 }
+
