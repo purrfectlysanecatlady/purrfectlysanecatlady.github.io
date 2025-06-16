@@ -8,12 +8,16 @@ body
     width: 10em;
     border-radius: 2em;
     overflow: hidden;
+    display: flex;
+    align-content: center;
 }
 
 
 .cat {
     width: 10em;
     cursor: pointer;
+    display: flex;
+    align-content: center;
 }
 
 
