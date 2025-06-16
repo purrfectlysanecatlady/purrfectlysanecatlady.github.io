@@ -12,3 +12,4 @@ const getCatFact = async () => {
     }
 }
 cat.addEventListener("click", () => { getCatFact() })
+
