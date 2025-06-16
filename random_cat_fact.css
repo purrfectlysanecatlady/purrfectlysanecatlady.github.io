@@ -8,6 +8,11 @@ html
     cursor: pointer;
 }
 
+.card {
+    display: flex
+    justify-content: center
+}
+
 
 .fact {
     padding: 1em;
