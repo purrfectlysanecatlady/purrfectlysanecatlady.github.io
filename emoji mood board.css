@@ -5,12 +5,16 @@
     align-items: center;
 }
 
+h1 {
+    font-size: 4rem;
+}
+
 
 .mood-strip {
     width: 90%;
     height: 20rem;
     border: 5px solid salmon;
-    font-size: 4em;
+    font-size: 4rem;
     overflow: scroll;
     user-select: none;
 }
@@ -18,8 +22,9 @@
 
 .options {
     width: 90%;
-    font-size: 4em;
+    font-size: 4rem;
     display: flex;
+    justify-content: center;
     cursor: pointer;
     user-select: none;
 }
