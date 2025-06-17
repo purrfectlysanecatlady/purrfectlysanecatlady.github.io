@@ -61,7 +61,8 @@ body {
 .skill-list,
 .portfolio-list,
 .contact-info,
-.random-fact{
+.random-fact,
+.languages {
     background-color: white;
     padding: 20px;
     margin-bottom: 20px;
