@@ -4,9 +4,10 @@ html
 }
 
 .cat {
-    width: 10em;
+    width: 100%;           /* Flexible width */
+    max-width: 300px;      /* Upper bound for large screens */
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 50%;    /* Proportional rounded corners */
 }
 
 .card {
