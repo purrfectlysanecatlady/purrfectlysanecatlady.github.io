@@ -8,6 +8,7 @@ html
     max-width: 300px;      /* Upper bound for large screens */
     cursor: pointer;
     border-radius: 50%;    /* Proportional rounded corners */
+    user-select: none;
 }
 
 .card {
