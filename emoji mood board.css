@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mood-strip {
+    width: 90%;
+    height: 12rem;
+    border: 5px solid salmon;
+    font-size: 4em;
+    overflow: scroll;
+    user-select: none;
+}
+
+
+.options {
+    display: flex;
+    font-size: 4em;
+    cursor: pointer;
+    user-select: none;
+}
