@@ -8,7 +8,7 @@
 
 .mood-strip {
     width: 90%;
-    height: 12rem;
+    height: 20rem;
     border: 5px solid salmon;
     font-size: 4em;
     overflow: scroll;
@@ -17,8 +17,9 @@
 
 
 .options {
-    display: flex;
+    width: 90%;
     font-size: 4em;
+    display: flex;
     cursor: pointer;
     user-select: none;
 }
