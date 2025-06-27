@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WHACK A MOLE!</title>
+  <meta charset="UTF-8">
+  <title>StackBlitz Embedded Project</title>
 </head>
 <body>
-  <header>
-    <h1>WHACK A MOLE!</h1>
-  </header>
-<main>
-<div id="my-embedded-project"></div>
-<script src="https://stackblitz.com/edit/react-7xppqj4t?embed=1&file=src%2FApp.js"></script>
-<script type="module"> import sdk from '@stackblitz/sdk'
 
-sdk.embedProjectId(
-  'elementOrId',
-  'react-7xppqj4t',
-  {
-    forceEmbedLayout: true,
-    openFile: 'src/App.js',
-  }
-);</script>
+<!-- Container div -->
+<div id="embedded-project-container"></div>
 
-</main>
+<!-- Include the StackBlitz SDK -->
+<script src="https://cdn.stackblitz.com/sdk/embed.min.js"></script>
+
+<!-- Your embedding logic -->
+<script type="module"> // Importing @stackblitz/sdk dynamically since we're directly including the minified version through CDN const { embedProjectId } = window.StackBlitzSDK; // Call the function with necessary parameters embedProjectId('embedded-project-container', 'react-7xppqj4t', { forceEmbedLayout: true, openFile: 'src/App.js', }); </script>
 
 </body>
 </html>
