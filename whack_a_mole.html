@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>StackBlitz Embedded Project</title>
+  <title>Embedded React App</title>
 </head>
+
 <body>
 
-<div id="embedded-project-container"></div>
+  <h1>Whack a mole!</h1>
 
-<script src="https://cdn.stackblitz.com/sdk/embed.min.js"></script>
+  <!-- Embed the project directly using an iframe -->
+  <iframe width="100%" height="600px"
+    src="https://stackblitz.com/edit/react-ht91umss?embed=1&file=src%2FApp.js&view=preview"
+    style="border: none; overflow: hidden;"></iframe>
 
-<script type="module"> const { embedProjectId } = window.StackBlitzSDK; embedProjectId('embedded-project-container', 'react-7xppqj4t', { forceEmbedLayout: true, openFile: 'src/App.js', }); </script>
 
 </body>
+
 </html>
