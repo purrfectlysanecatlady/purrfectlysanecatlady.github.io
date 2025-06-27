@@ -6,14 +6,11 @@
 </head>
 <body>
 
-<!-- Container div -->
 <div id="embedded-project-container"></div>
 
-<!-- Include the StackBlitz SDK -->
 <script src="https://cdn.stackblitz.com/sdk/embed.min.js"></script>
 
-<!-- Your embedding logic -->
-<script type="module"> // Importing @stackblitz/sdk dynamically since we're directly including the minified version through CDN const { embedProjectId } = window.StackBlitzSDK; // Call the function with necessary parameters embedProjectId('embedded-project-container', 'react-7xppqj4t', { forceEmbedLayout: true, openFile: 'src/App.js', }); </script>
+<script type="module"> const { embedProjectId } = window.StackBlitzSDK; embedProjectId('embedded-project-container', 'react-7xppqj4t', { forceEmbedLayout: true, openFile: 'src/App.js', }); </script>
 
 </body>
 </html>
