@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Whack-a-Mole in React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            background-color: #FFFFCC;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .game-container {
+            width: 520px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hole-grid {
+            margin-top: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 480px;
+            height: 480px;
+        }
+
+        .hole {
+            background-color: #90EE90;
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .active-hole {
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .mole {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background-image: url('https://img.icons8.com/?size=100&id=BuSNSoOnHwEX&format=png&color=000000');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        .timer {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: darkblue;
+            margin-top: 10px;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: forestgreen;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: none;
+            color: white;
+            cursor: pointer;
+            user-select: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .start-button {
+            background-color: seagreen;
+        }
+
+        .start-button:hover {
+            background-color: mediumseagreen;
+        }
+
+        .restart-button {
+            background-color: darkslategray;
+        }
+
+        .restart-button:hover {
+            background-color: dimgray;
+        }
+
+
+        @media (max-width: 480px) {
+            .hole-grid {
+                width: 300px;
+                /* smaller width than 480px */
+                height: 300px;
+                /* maintain square */
+                gap: 6px;
+                /* smaller gap */
+            }
+
+            .hole {
+                width: 90px;
+                /* smaller holes */
+                height: 90px;
+                user-select: none;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+            }
+        }
+    </style>
+
+    <!-- React and ReactDOM UMD libraries -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel Standalone -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+        function App() {
+            const { useState, useEffect } = React;
+
+            const [state, setState] = useState({
+                holes: Array.from({ length: 9 }, (_, i) => ({ id: i, visible: false })),
+                score: 0,
+                moleIndex: null,
+                isPlaying: false,
+                timeLeft: 30,
+                showRestartButton: false,
+            });
+
+            function startGame() {
+                setState({
+                    holes: Array.from({ length: 9 }, (_, i) => ({ id: i, visible: false })),
+                    score: 0,
+                    moleIndex: null,
+                    isPlaying: true,
+                    timeLeft: 30,
+                    showRestartButton: false,
+                });
+            }
+
+            function handleClick(index) {
+                if (!state.isPlaying) return;
+                if (index !== state.moleIndex) return;
+
+                // Replace optional chaining:
+                if (!state.holes[state.moleIndex] || !state.holes[state.moleIndex].visible) return;
+
+                setState(current => {
+                    const newHoles = current.holes.map((hole, i) =>
+                        i === current.moleIndex ? { ...hole, visible: false } : hole
+                    );
+                    return {
+                        ...current,
+                        holes: newHoles,
+                        moleIndex: null,
+                        score: current.score + 1,
+                    };
+                });
+            }
+
+            function activateRandomHole() {
+                setState(current => {
+                    const randomIndex = Math.floor(Math.random() * current.holes.length);
+                    const newHoles = current.holes.map((hole, i) => ({
+                        ...hole,
+                        visible: i === randomIndex,
+                    }));
+                    return {
+                        ...current,
+                        holes: newHoles,
+                        moleIndex: randomIndex,
+                    };
+                });
+            }
+
+            function restartGame() {
+                startGame();
+            }
+
+            useEffect(() => {
+                if (!state.isPlaying) return;
+
+                if (state.timeLeft === 0) {
+                    setState(current => ({
+                        ...current,
+                        isPlaying: false,
+                        showRestartButton: true,
+                        moleIndex: null,
+                        holes: current.holes.map(h => ({ ...h, visible: false })),
+                    }));
+                    return;
+                }
+
+                const timerId = setTimeout(() => {
+                    setState(current => ({ ...current, timeLeft: current.timeLeft - 1 }));
+                }, 1000);
+
+                return () => clearTimeout(timerId);
+            }, [state.isPlaying, state.timeLeft]);
+
+            useEffect(() => {
+                if (!state.isPlaying) return;
+
+                const intervalId = setInterval(() => {
+                    activateRandomHole();
+                }, 1000);
+
+                return () => clearInterval(intervalId);
+            }, [state.isPlaying]);
+
+            if (!state.isPlaying && !state.showRestartButton) {
+                return (
+                    <div className="game-container">
+                        <h1>WHACK A MOLE!</h1>
+                        <button className="start-button" onClick={startGame}>Start Game</button>
+                    </div>
+                );
+            }
+
+            if (state.showRestartButton) {
+                return (
+                    <div className="game-container">
+                        <h1>WHACK A MOLE!</h1>
+                        <p className="score">Final Score: {state.score}</p>
+                        <button className="restart-button" onClick={restartGame}>Restart Game</button>
+                    </div>
+                );
+            }
+
+            return (
+                <div className="game-container">
+                    <h1>WHACK A MOLE!</h1>
+                    <p className="score">Score: {state.score}</p>
+                    <div className="timer">Time Left: {state.timeLeft}s</div>
+                    <div className="hole-grid">
+                        {state.holes.map((hole, index) => (
+                            <div
+                                key={hole.id}
+                                className={`hole ${hole.visible ? 'active-hole' : ''}`}
+                                onClick={() => handleClick(index)}
+                            >
+                                {hole.visible && <div className="mole" />}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+        ReactDOM.render(<App />, document.getElementById('app'));
+    </script>
+</body>
+
+</html>

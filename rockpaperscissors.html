@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       
+    <meta charset="UTF-8" />
+       
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Rock Paper Scissors in React</title>
+        <style>
+        /* Basic styling */
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            text-align: center;
+            background: #f0f0f0;
+        }
+
+        .game-container {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            display: inline-block;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        button {
+            margin: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .results,
+        .score {
+            margin-top: 1rem;
+        }
+
+        .play-again {
+            margin-top: 1.5rem;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 0.3rem;
+        }
+    </style>
+
+        <!-- React UMD (production build) -->
+       
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+        <!-- ReactDOM UMD -->
+       
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+        <!-- Babel standalone to compile JSX in browser -->
+       
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+        <!-- React app will mount inside this div -->
+        <div id="root"></div>
+
+        <!-- Our React code -->
+       
+    <script type="text/babel">
+
+        // Get React and ReactDOM from the global namespace
+        const { useState } = React;
+
+        function App2() {
+            // Define state variables with React useState hook
+            // playerChoice tracks human's choice ('rock', 'paper', or 'scissors')
+            const [playerChoice, setPlayerChoice] = useState(null);
+            // computerChoice tracks computer's choice
+            const [computerChoice, setComputerChoice] = useState(null);
+            // result stores the result message (win/lose/draw)
+            const [result, setResult] = useState(null);
+            // wins and losses store counts of wins and losses
+            const [wins, setWins] = useState(0);
+            const [losses, setLosses] = useState(0);
+            // streak counts consecutive wins
+            const [streak, setStreak] = useState(0);
+            // lastOutcome helps to keep track of previous round result
+            const [lastOutcome, setLastOutcome] = useState(null);
+
+            // Function to handle when user picks rock/paper/scissors
+            const handleChoice = (player) => {
+                const choices = ['rock', 'paper', 'scissors'];
+                // Computer picks a random choice
+                const computer = choices[Math.floor(Math.random() * choices.length)];
+
+                // Update state with choices
+                setPlayerChoice(player);
+                setComputerChoice(computer);
+
+                // Determine result based on player and computer choices
+                if (player === computer) {
+                    setResult('⚖ Draw');
+                    setStreak(0);
+                    setLastOutcome('draw');
+                } else if (
+                    (player === 'rock' && computer === 'scissors') ||
+                    (player === 'paper' && computer === 'rock') ||
+                    (player === 'scissors' && computer === 'paper')
+                ) {
+                    setResult("🏆 You win!");
+                    setWins(wins + 1);
+                    // Increase streak if last was a win, else start at 1
+                    setStreak(lastOutcome === 'win' ? streak + 1 : 1);
+                    setLastOutcome('win');
+                } else {
+                    setResult("😔 You lose!");
+                    setLosses(losses + 1);
+                    // Losing resets the streak
+                    setStreak(0);
+                    setLastOutcome('lose');
+                }
+            };
+
+            // Reset game state to initial values
+            const resetGame = () => {
+                setPlayerChoice(null);
+                setComputerChoice(null);
+                setResult(null);
+                setWins(0);
+                setLosses(0);
+                setStreak(0);
+                setLastOutcome(null);
+            };
+
+            return (
+                <div className="game-container">
+                    <h1>Rock Paper Scissors</h1>
+                    <p>Choose your weapon:</p>
+                    <div className="buttons">
+                        <button onClick={() => handleChoice('rock')}>💎 Rock</button>
+                        <button onClick={() => handleChoice('paper')}>📄 Paper</button>
+                        <button onClick={() => handleChoice('scissors')}>✂️ Scissors</button>
+                    </div>
+
+                    {/* Show results only if both choices are made */}
+                    {playerChoice && computerChoice && (
+                        <div className="results">
+                            <p>You chose: {playerChoice}</p>
+                            <p>Computer chose: {computerChoice}</p>
+                            <h2>{result}</h2>
+                        </div>
+                    )}
+
+                    {/* Show score only if any games played */}
+                    {(wins + losses) > 0 && (
+                        <div className="score">
+                            <p>Wins: {wins} | Losses: {losses}</p>
+                            <p>Win Rate: {Math.round((wins / (wins + losses)) * 100)}%</p>
+                        </div>
+                    )}
+
+                    {/* Show streak message if winning streak > 1 */}
+                    {streak > 1 && <p>🔥 You're on a {streak}-win streak!</p>}
+
+                    {/* Play Again button only visible after player made a choice */}
+                    {playerChoice && (
+                        <button onClick={resetGame} className="play-again">
+                            🔄 Play Again
+                        </button>
+                    )}
+                </div>
+            );
+        }
+
+        // Render App2 component into the #root div
+        ReactDOM.render(<App2 />, document.getElementById('root'));
+
+    </script>
+</body>
+
+</html>

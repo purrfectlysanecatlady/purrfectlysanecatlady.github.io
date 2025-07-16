@@ -1,0 +1,30 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    text-align: center;
+}
+
+.mood-strip {
+    width: 90%;
+    margin: 0 auto;
+    height: 12rem;
+    border: 5px solid salmon;
+    font-size: 4em;
+    overflow: scroll;
+    user-select: none;
+}
+
+.options {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+    cursor: pointer;
+    overflow: auto;
+    user-select: none;
+}
+

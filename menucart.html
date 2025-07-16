@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Menu Cart in React</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 0 10px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .App {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        li {
+            list-style: none;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 4px 8px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        h2 {
+            margin-top: 30px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+    </style>
+
+    <!-- React & ReactDOM UMD -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+    <!-- Babel standalone -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+        function App() {
+            const { useState } = React;
+
+            const menuItems = [
+                { name: "Angus Burger", price: 8.99, category: "burger" },
+                { name: "Classic Cheeseburger", price: 7.49, category: "burger" },
+                { name: "Veggie Delight", price: 6.99, category: "vegan" },
+                { name: "Chicken Caesar Salad", price: 9.99, category: "salad" },
+                { name: "Grilled Salmon", price: 14.99, category: "seafood" },
+                { name: "BBQ Pulled Pork Sandwich", price: 8.49, category: "sandwich" },
+                { name: "Buffalo Wings", price: 6.99, category: "appetizer" },
+                { name: "Fries with Dipping Sauce", price: 3.99, category: "side" },
+                { name: "Caramelized Onion Soup", price: 5.99, category: "soup" },
+                { name: "Tiramisu Cake", price: 5.49, category: "dessert" },
+                { name: "Espresso Martini", price: 10.99, category: "drink" }
+            ];
+
+            const [cart, setCart] = useState([]);
+
+            const addToCart = (menuItem) => {
+                setCart(oldCart => [...oldCart, menuItem]);
+            };
+
+            return (
+                <div className="App">
+                    <h1>Menu</h1>
+                    <ul>
+                        {menuItems.map(menuItem => (
+                            <li key={menuItem.name}>
+                                {menuItem.name} - ${menuItem.price.toFixed(2)} - {menuItem.category}
+                                <button onClick={() => addToCart(menuItem)}>Add to cart</button>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <h2>Cart</h2>
+                    {cart.length === 0 && <p>Your cart is empty.</p>}
+                    <ul>
+                        {cart.map((cartItem, idx) => (
+                            <li key={cartItem.name + idx}>
+                                {cartItem.name} - ${cartItem.price.toFixed(2)} - {cartItem.category}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('app'));
+
+    </script>
+</body>
+
+</html>

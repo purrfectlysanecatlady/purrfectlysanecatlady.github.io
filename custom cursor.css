@@ -1,0 +1,13 @@
+body {
+    cursor: none;
+}
+
+.cursor {
+    width: 2em;
+    height: 2em;
+    /* background: blue; */
+    position: absolute;
+    /* border-radius: 100%; */
+
+
+}

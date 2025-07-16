@@ -1,0 +1,24 @@
+html
+{
+    text-align: center;
+}
+
+.cat {
+    width: 100%;           /* Flexible width */
+    max-width: 300px;      /* Upper bound for large screens */
+    cursor: pointer;
+    border-radius: 50%;    /* Proportional rounded corners */
+    user-select: none;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    user-select: none;
+}
+
+
+.fact {
+    padding: 1em;
+}
+
