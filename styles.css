@@ -127,6 +127,12 @@ body {
     background-color: #FFC107;
 }
 
+#zh-language
+{
+    background-color: #ffa500;
+}
+
 .language-bubble:hover {
     transform: scale(1.1);
 }
+
