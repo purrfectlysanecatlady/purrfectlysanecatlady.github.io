@@ -124,7 +124,7 @@ body {
 }
 
 #ger-language {
-    background-color: #FFC107;
+    background-color: #FFF44F;
 }
 
 #zh-language {
@@ -134,5 +134,6 @@ body {
 .language-bubble:hover {
     transform: scale(1.1);
 }
+
 
 
