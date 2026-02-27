@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница с виджетом МойКласс</title>
+    <style>
+        /* Немного стилей, чтобы страница не выглядела пустой */
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .widget-container {
+            border: 1px solid #eee;
+            padding: 20px;
+            border-radius: 8px;
+            min-height: 400px; /* Чтобы страница не «прыгала» при загрузке */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Добро пожаловать!</h1>
+    <p>Ниже представлено расписание/форма записи нашего центра:</p>
+
+    <!-- Разместите следующий код на месте, где будет отображаться виджет: -->
+    <div id="SiteWidgetMoyklass131635" class="widget-container"></div>
+
+    <hr>
+    <p>© 2026 Cat Lady</p>
+
+    <!-- Разместите следующий код внизу страницы перед тегом </body>: -->
+    <!-- MoyKlass widget begin -->
+    <script src="https://app.moyklass.com/api/site/widget/?id=01rv8zylBcdpwnJtI5ua2bSoEZvlUmVdrs79" type="text/javascript" charset="UTF-8"></script>
+    <!-- MoyKlass widget end -->
+
+</body>
+</html>
